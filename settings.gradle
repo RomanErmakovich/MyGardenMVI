@@ -1,0 +1,4 @@
+rootProject.name = 'mvflow'
+
+include 'mvflow-core'
+include ':custom:android-app'

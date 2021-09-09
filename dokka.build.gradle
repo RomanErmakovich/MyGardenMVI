@@ -1,0 +1,60 @@
+def documentationRoot = "${project.rootDir}/website/hugo-src/static/documentation"
+
+dokka {
+    // https://github.com/Kotlin/dokka#using-dokka
+    outputFormat = 'html'
+    outputDirectory = documentationRoot
+
+    subProjects = ["mvflow-core"]
+    configuration {
+        jdkVersion = 8
+        reportUndocumented = true
+        //samples = ['dokka-samples']
+
+        sourceLink {
+            // Unix based directory relative path to the root of the project (where you execute gradle respectively).
+            path = "./"
+            // URL showing where the source code can be accessed through the web browser
+            url = "https://github.com/pedroql/mvflow/blob/master/"
+            // Suffix which is used to append the line number to the URL. Use #L for GitHub
+            lineSuffix = "#L"
+        }
+
+//      // Disable linking to online kotlin-stdlib documentation
+//      noStdlibLink = false
+//
+//      // Disable linking to online JDK documentation
+//      noJdkLink = false
+
+
+      // Allows linking to documentation of the project's dependencies (generated with Javadoc or Dokka)
+      // Repeat for multiple links
+      externalDocumentationLink {
+          // Root URL of the generated documentation to link with. The trailing slash is required!
+          url = new URL("https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/")
+
+          // If package-list file is located in non-standard location
+          // https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/package-list
+          // packageListUrl = new URL("file:///home/user/localdocs/package-list")
+      }
+    }
+}
+
+task removeAbsolutePathsFromDokkaFiles {
+    doLast {
+        fileTree(documentationRoot).matching {
+            include "**/index-outline.html"
+        }
+                .forEach { File file ->
+                    //println("Removing hardcoded paths mentioning '${file.parent}/' from file ${file.path}")
+                    ant.replace(
+                            file: file,
+                            // remove the path all the way to the parent of this file
+                            token: "${file.parent}/",
+                            value: ""
+                    )
+                }
+    }
+}
+
+dokka.finalizedBy removeAbsolutePathsFromDokkaFiles

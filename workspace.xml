@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2e1ab34a-2708-4ca9-8dab-a4933ef98959" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/custom/android-app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/custom/android-app/src/main/kotlin/ru/mygarden/mvflow/myapp/android/screens/home/HomeActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/custom/android-app/src/main/kotlin/ru/mygarden/mvflow/myapp/android/screens/mygarden_main/MyGardenMainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/custom/android-app/src/main/kotlin/ru/mygarden/mvflow/myapp/android/screens/mygarden_main/MyGardenMainMVFlow.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/custom/android-app/src/main/kotlin/ru/mygarden/mvflow/myapp/android/screens/mygarden_main/MyGardenMainViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/custom/android-app/src/main/res/layout/mygarden_main_activity.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/custom/android-app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/custom/android-app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/custom/android-app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/custom/android-app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/custom/android-app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/custom/android-app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/custom/android-app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/custom/android-app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/custom/android-app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/custom/android-app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/custom/android-app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apivalidation.build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/apivalidation.build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/custom/android-app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/custom/android-app/proguard-rules.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/androidTest/kotlin/ru/mygarden/mvflow/myapp/android/ExampleInstrumentedTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/custom/android-app/src/androidTest/kotlin/ru/mygarden/mvflow/myapp/android/ExampleInstrumentedTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/kotlin/ru/mygarden/mvflow/myapp/android/screens/counter/CounterMVFlow.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/kotlin/ru/mygarden/mvflow/myapp/android/screens/counter/SimpleCounterActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/kotlin/ru/mygarden/mvflow/myapp/android/screens/counter/SimpleCounterViewModel.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/kotlin/ru/mygarden/mvflow/myapp/android/screens/dummydialog/DummyDialogActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/custom/android-app/src/main/kotlin/ru/mygarden/mvflow/myapp/android/screens/dummydialog/DummyDialogActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/kotlin/ru/mygarden/mvflow/myapp/android/screens/home/HomeActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/kotlin/ru/mygarden/mvflow/myapp/android/screens/lifecycle/LifecycleActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/kotlin/ru/mygarden/mvflow/myapp/android/screens/lifecycle/LifecycleMVFlow.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" afterPath="$PROJECT_DIR$/custom/android-app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/custom/android-app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/res/layout/counter_activity.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/res/layout/dummy_dialog_activity.xml" beforeDir="false" afterPath="$PROJECT_DIR$/custom/android-app/src/main/res/layout/dummy_dialog_activity.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/res/layout/home_activity.xml" beforeDir="false" afterPath="$PROJECT_DIR$/custom/android-app/src/main/res/layout/home_activity.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/res/layout/lifecycle_activity.xml" beforeDir="false" afterPath="$PROJECT_DIR$/custom/android-app/src/main/res/layout/lifecycle_activity.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/custom/android-app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/custom/android-app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/res/values/colors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/custom/android-app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/custom/android-app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/test/kotlin/ru/mygarden/mvflow/myapp/android/CollectingEffectSender.kt" beforeDir="false" afterPath="$PROJECT_DIR$/custom/android-app/src/test/kotlin/ru/mygarden/mvflow/myapp/android/CollectingEffectSender.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/test/kotlin/ru/mygarden/mvflow/myapp/android/ExampleUnitTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/custom/android-app/src/test/kotlin/ru/mygarden/mvflow/myapp/android/ExampleUnitTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/test/kotlin/ru/mygarden/mvflow/myapp/android/screens/counter/CounterMVFlowHandlerTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/custom/android-app/src/test/kotlin/ru/mygarden/mvflow/myapp/android/screens/mygarden_main/MyGardenMainMVFlowHandlerTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/android-app/src/test/kotlin/ru/mygarden/mvflow/myapp/android/screens/counter/CounterMVlowReducerTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/custom/android-app/src/test/kotlin/ru/mygarden/mvflow/myapp/android/screens/mygarden_main/CounterMVlowReducerTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dokka.build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/dokka.build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[0123456789ABCDEF]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1tueYpRoDrqqU4oQspNctXHVSjW" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="0123456789ABCDEF" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-06-24T10:36:00.141Z" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="project.structure.last.edited" value="Suggestions" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="PsdUISettings">
+    <option name="LAST_EDITED_BUILD_TYPE" value="release" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="ru.mygarden.mvflow.myapp.android.screens.nastr" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Android App.custom.android-app">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="custom.android-app" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="mvflow.custom.android-app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExampleInstrumentedT..." type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
+      <module name="mvflow.custom.android-app" />
+      <option name="TESTING_TYPE" value="2" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="ru.mygarden.mvflow.myapp.android.ExampleInstrumentedTest" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="INCLUDE_GRADLE_EXTRA_OPTIONS" value="true" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Android App.custom.android-app" />
+      <item itemvalue="Android Instrumented Tests.ExampleInstrumentedT..." />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Android Instrumented Tests.ExampleInstrumentedT..." />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2e1ab34a-2708-4ca9-8dab-a4933ef98959" name="Default Changelist" comment="" />
+      <created>1623623451656</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1623623451656</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="595" y="35" key="#ExampleInstrumentedT..." timestamp="1626606936816">
+      <screen x="172" y="0" width="1428" height="900" />
+    </state>
+    <state x="595" y="35" key="#ExampleInstrumentedT.../172.0.1428.900@172.0.1428.900" timestamp="1626606936816" />
+    <state x="424" y="168" width="966" height="537" key="#PSD" timestamp="1626607827569">
+      <screen x="172" y="0" width="1428" height="900" />
+    </state>
+    <state x="424" y="168" width="966" height="537" key="#PSD/172.0.1428.900@172.0.1428.900" timestamp="1626607827569" />
+    <state x="508" y="196" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1626606137584">
+      <screen x="172" y="0" width="1428" height="900" />
+    </state>
+    <state x="508" y="196" key="#com.intellij.execution.impl.EditConfigurationsDialog/172.0.1428.900@172.0.1428.900" timestamp="1626606137584" />
+    <state x="677" y="165" key="#com.intellij.ide.util.MemberChooser" timestamp="1625840607674">
+      <screen x="172" y="0" width="1428" height="900" />
+    </state>
+    <state x="677" y="165" key="#com.intellij.ide.util.MemberChooser/172.0.1428.900@172.0.1428.900" timestamp="1625840607674" />
+    <state x="615" y="238" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1626606933078">
+      <screen x="172" y="0" width="1428" height="900" />
+    </state>
+    <state x="615" y="238" key="#com.intellij.ide.util.TreeClassChooserDialog/172.0.1428.900@172.0.1428.900" timestamp="1626606933078" />
+    <state x="437" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1624222733746">
+      <screen x="172" y="0" width="1428" height="900" />
+    </state>
+    <state x="437" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/172.0.1428.900@172.0.1428.900" timestamp="1624222733746" />
+    <state x="583" y="240" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1623763078880">
+      <screen x="172" y="0" width="1428" height="900" />
+    </state>
+    <state x="583" y="240" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/172.0.1428.900@172.0.1428.900" timestamp="1623763078880" />
+    <state x="264" y="92" width="1244" height="716" key="AVDManager" timestamp="1625797328592">
+      <screen x="172" y="0" width="1428" height="900" />
+    </state>
+    <state x="264" y="92" width="1244" height="716" key="AVDManager/172.0.1428.900@172.0.1428.900" timestamp="1625797328592" />
+    <state x="683" y="195" key="AndroidProcessChooserDialog" timestamp="1625729426108">
+      <screen x="172" y="0" width="1428" height="900" />
+    </state>
+    <state x="683" y="195" key="AndroidProcessChooserDialog/172.0.1428.900@172.0.1428.900" timestamp="1625729426108" />
+    <state width="406" height="466" key="DebuggerActiveHint" timestamp="1624276437640">
+      <screen x="172" y="0" width="1428" height="900" />
+    </state>
+    <state width="406" height="466" key="DebuggerActiveHint/172.0.1428.900@172.0.1428.900" timestamp="1624276437640" />
+    <state x="666" y="204" key="FileChooserDialogImpl" timestamp="1624180184381">
+      <screen x="172" y="0" width="1428" height="900" />
+    </state>
+    <state x="666" y="204" key="FileChooserDialogImpl/172.0.1428.900@172.0.1428.900" timestamp="1624180184381" />
+    <state width="1384" height="223" key="GridCell.Tab.0.bottom" timestamp="1626520776143">
+      <screen x="172" y="0" width="1428" height="900" />
+    </state>
+    <state width="1384" height="223" key="GridCell.Tab.0.bottom/172.0.1428.900@172.0.1428.900" timestamp="1626520776143" />
+    <state width="1384" height="223" key="GridCell.Tab.0.center" timestamp="1626520776143">
+      <screen x="172" y="0" width="1428" height="900" />
+    </state>
+    <state width="1384" height="223" key="GridCell.Tab.0.center/172.0.1428.900@172.0.1428.900" timestamp="1626520776143" />
+    <state width="1384" height="223" key="GridCell.Tab.0.left" timestamp="1626520776142">
+      <screen x="172" y="0" width="1428" height="900" />
+    </state>
+    <state width="1384" height="223" key="GridCell.Tab.0.left/172.0.1428.900@172.0.1428.900" timestamp="1626520776142" />
+    <state width="1384" height="223" key="GridCell.Tab.0.right" timestamp="1626520776143">
+      <screen x="172" y="0" width="1428" height="900" />
+    </state>
+    <state width="1384" height="223" key="GridCell.Tab.0.right/172.0.1428.900@172.0.1428.900" timestamp="1626520776143" />
+    <state width="1384" height="222" key="GridCell.Tab.1.bottom" timestamp="1626011637989">
+      <screen x="172" y="0" width="1428" height="900" />
+    </state>
+    <state width="1384" height="222" key="GridCell.Tab.1.bottom/172.0.1428.900@172.0.1428.900" timestamp="1626011637989" />
+    <state width="1384" height="222" key="GridCell.Tab.1.center" timestamp="1626011637989">
+      <screen x="172" y="0" width="1428" height="900" />
+    </state>
+    <state width="1384" height="222" key="GridCell.Tab.1.center/172.0.1428.900@172.0.1428.900" timestamp="1626011637989" />
+    <state width="1384" height="222" key="GridCell.Tab.1.left" timestamp="1626011637988">
+      <screen x="172" y="0" width="1428" height="900" />
+    </state>
+    <state width="1384" height="222" key="GridCell.Tab.1.left/172.0.1428.900@172.0.1428.900" timestamp="1626011637988" />
+    <state width="1384" height="222" key="GridCell.Tab.1.right" timestamp="1626011637989">
+      <screen x="172" y="0" width="1428" height="900" />
+    </state>
+    <state width="1384" height="222" key="GridCell.Tab.1.right/172.0.1428.900@172.0.1428.900" timestamp="1626011637989" />
+    <state x="387" y="81" key="SettingsEditor" timestamp="1625963084594">
+      <screen x="172" y="0" width="1428" height="900" />
+    </state>
+    <state x="387" y="81" key="SettingsEditor/172.0.1428.900@172.0.1428.900" timestamp="1625963084594" />
+    <state x="729" y="221" key="refactoring.ChangeSignatureDialog" timestamp="1624235113133">
+      <screen x="172" y="0" width="1428" height="900" />
+    </state>
+    <state x="729" y="221" key="refactoring.ChangeSignatureDialog/172.0.1428.900@172.0.1428.900" timestamp="1624235113132" />
+    <state x="542" y="200" key="run.anything.popup" timestamp="1624889412087">
+      <screen x="172" y="0" width="1428" height="900" />
+    </state>
+    <state x="542" y="200" key="run.anything.popup/172.0.1428.900@172.0.1428.900" timestamp="1624889412087" />
+    <state x="549" y="190" width="672" height="678" key="search.everywhere.popup" timestamp="1626513611894">
+      <screen x="172" y="0" width="1428" height="900" />
+    </state>
+    <state x="549" y="190" width="672" height="678" key="search.everywhere.popup/172.0.1428.900@172.0.1428.900" timestamp="1626513611894" />
+  </component>
+</project>

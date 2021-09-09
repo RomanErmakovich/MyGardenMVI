@@ -1,0 +1,31 @@
+public abstract interface class net/pedroloureiro/mvflow/EffectSender {
+	public abstract fun offer (Ljava/lang/Object;)Z
+	public abstract fun send (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public abstract interface class net/pedroloureiro/mvflow/MVFlow {
+	public abstract fun addExternalActions (Lkotlinx/coroutines/flow/Flow;Lkotlin/jvm/functions/Function1;)V
+	public abstract fun takeView (Lkotlinx/coroutines/CoroutineScope;Lnet/pedroloureiro/mvflow/MVFlow$View;Ljava/util/List;Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class net/pedroloureiro/mvflow/MVFlow$DefaultImpls {
+	public static synthetic fun addExternalActions$default (Lnet/pedroloureiro/mvflow/MVFlow;Lkotlinx/coroutines/flow/Flow;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public static synthetic fun takeView$default (Lnet/pedroloureiro/mvflow/MVFlow;Lkotlinx/coroutines/CoroutineScope;Lnet/pedroloureiro/mvflow/MVFlow$View;Ljava/util/List;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+}
+
+public abstract interface class net/pedroloureiro/mvflow/MVFlow$View {
+	public abstract fun actions ()Lkotlinx/coroutines/flow/Flow;
+	public abstract fun render (Ljava/lang/Object;)V
+}
+
+public final class net/pedroloureiro/mvflow/MVFlowKt {
+	public static final fun MVFlow (Ljava/lang/Object;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function1;)Lnet/pedroloureiro/mvflow/MVFlow;
+	public static final fun MVFlow (Ljava/lang/Object;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function2;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function1;)Lnet/pedroloureiro/mvflow/MVFlowWithEffects;
+	public static synthetic fun MVFlow$default (Ljava/lang/Object;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lnet/pedroloureiro/mvflow/MVFlow;
+	public static synthetic fun MVFlow$default (Ljava/lang/Object;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function2;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lnet/pedroloureiro/mvflow/MVFlowWithEffects;
+}
+
+public abstract interface class net/pedroloureiro/mvflow/MVFlowWithEffects : net/pedroloureiro/mvflow/MVFlow {
+	public abstract fun observeEffects ()Lkotlinx/coroutines/flow/Flow;
+}
+

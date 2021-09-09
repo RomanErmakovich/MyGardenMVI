@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">My Garden</string>
+
+    <!-- Home activity -->
+    <string name="home_simple_counter">Программа МОЙ САД</string>
+    <string name="home_lifecycle">Настройки</string>
+
+    <!-- Simple counter activity -->
+    <string name="simple_counter_reset">Reset</string>
+    <string name="simple_counter_add_one">+1</string>
+    <string name="simple_counter_plus_many">Plus many</string>
+    <string name="simple_counter_explanation">Plus many button initiates a fake background work that lasts a few seconds
+        and increments the counter by 1, then by 2, and then by 1.\n\nThe time it takes varies and you can run multiple
+        of
+        them at the same time.
+    </string>
+
+    <!-- Dummy activity -->
+    <string name="dummy_dialog_message">Hello there! Press the button to dismiss this dialog!</string>
+    <string name="dummy_dialog_dismiss">Dismiss</string>
+
+    <!-- Lifecycle activity -->
+    <string name="lifecycle_open_dialog">Open dialog</string>
+    <string name="lifecycle_resumed">Resumed</string>
+    <string name="lifecycle_normal">Normal</string>
+    <string name="lifecycle_started">Started</string>
+    <string name="lifecycle_open_dialog_explanation">Opening a dialog can be useful to understand the difference between
+        started and resumed behaviour.
+    </string>
+    <string name="lifecycle_explanation">The best way to understand what is happening here is opening logcat and
+        filtering for "lifecyle counter".\n\nEach field is updated in a slightly different way. The first is always
+        updated (could create problems while the app is in the background). The second is only updated while the
+        activity is started and the third while the activity is resumed.\n\nIn order to see the differences between
+    them, you can open logcat with the filter and then try opening a dialog (activity pauses) or leave the app
+    (activity stops).\n\nAdditionally, if you press back, you destroy the acticity and all updates stop.</string>
+
+</resources>

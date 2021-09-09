@@ -1,0 +1,79 @@
+apply plugin: "maven"
+apply plugin: "maven-publish"
+
+apply from: "$rootDir/utils.build.gradle"
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier "sources"
+}
+
+tasks.register('javadocJar', Jar) {
+    def dokkaTask = rootProject.tasks.named('dokka').get()
+    dependsOn dokkaTask
+    archiveClassifier.set 'javadoc'
+    from dokkaTask.outputDirectory
+}
+
+publishing {
+    // https://docs.gradle.org/5.0/dsl/org.gradle.api.publish.maven.MavenPublication.html
+    // https://dev.to/madhead/no-bullshit-guide-on-publishing-your-gradle-projects-to-maven-central-3ok4
+    publications {
+        MVFlow(MavenPublication) {
+            from components.java
+            artifact sourceJar
+            artifact javadocJar
+            pom {
+                name = "MVFlow"
+                description = "Simple MVI architecture using Kotlin Flows"
+                url = "https://github.com/pedroql/mvflow"
+                licenses {
+                    license {
+                        name = 'The MIT License'
+                        url = 'https://opensource.org/licenses/MIT'
+                        distribution = 'repo'
+                    }
+                }
+                developers {
+                    developer {
+                        name = "Pedro Loureiro"
+                        id = "pedroql"
+                        url = "https://pedroloureiro.net"
+                    }
+                }
+                scm {
+                    connection = "scm:git:https://github.com/pedroql/mvflow.git"
+                    developerConnection = "scm:git:git@github.com/pedroql/mvflow.git"
+                    url = "https://github.com/pedroql/mvflow"
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            url = uri("$buildDir/local-maven-repository")
+            name = "local"
+        }
+
+        maven {
+            name = "OSSRH"
+            url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+            credentials {
+                username = readProperty("OSSRH_USER")
+                password = readProperty("OSSRH_PASSWORD")
+            }
+        }
+    }
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+//            // https://docs.gradle.org/current/userguide/signing_plugin.html#sec:signing_pom_files
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+        }
+    }
+}
+
+// need to do this after specifying the publications
+apply from: "$rootDir/signing.build.gradle"

@@ -1,0 +1,4 @@
+apiValidation {
+    def sampleProjects = allprojects.findAll { it.path.startsWith(":custom") }.collect { it.name }
+    ignoredProjects += sampleProjects + ["mvflow"]
+}

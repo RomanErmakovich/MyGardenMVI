@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:keepScreenOn="true"
+    tools:context=".screens.mygarden_main.MyGardenMainActivity">
+
+
+
+    <LinearLayout
+        android:id="@+id/mainLL"
+        android:visibility="visible"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="100"
+        android:background="#CCFFCC">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="92"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:background="#FFFFAA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:textSize="46sp"
+                    android:textColor="#000000"
+                    android:text="Темпер. наружная : "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvTN" />
+
+                <TextView
+                    android:textSize="46sp"
+                    android:textColor="#000000"
+                    android:text="Темпер. в теплице : "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvTVV" />
+
+                <TextView
+                    android:textSize="46sp"
+                    android:textColor="#000000"
+                    android:text="Влажность в тепл. : "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvVVV" />
+
+                <TextView
+                    android:textColor="#000000"
+                    android:text="Посл. полив : "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvLastWater"
+                    android:visibility="visible"
+                    android:textSize="46sp" />
+
+
+                <TextView
+                    android:textSize="46sp"
+                    android:textColor="#000000"
+                    android:text="Влажность почвы : "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvVP" />
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
+                android:padding="5dp"
+                android:background="#FFD4AA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvAutoWind"
+                    android:textSize="36sp"
+                    android:textColor="#000000"
+                    android:text=""
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+                <TextView
+                    android:id="@+id/tvAutoHeat"
+                    android:textSize="36sp"
+                    android:textColor="#000000"
+                    android:text=""
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+                <TextView
+                    android:id="@+id/tvAutoWater"
+                    android:textSize="36sp"
+                    android:textColor="#000000"
+                    android:text=""
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toStartOf="@+id/tvAutoWind"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/tvAutoHeat"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
+                android:padding="5dp"
+                android:background="#FFD4D4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/txGR1"
+                    android:textSize="40sp"
+                    android:textColor="#000000"
+                    android:text="Гр1 : "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txTP1"
+                    android:textSize="40sp"
+                    android:textColor="#000000"
+                    android:text="Тепл1 : "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="@+id/txGR1"
+                    app:layout_constraintTop_toBottomOf="@+id/txGR1" />
+
+                <TextView
+                    android:id="@+id/txGR2"
+                    android:textSize="40sp"
+                    android:textColor="#000000"
+                    android:text="Гр2 : "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toStartOf="@+id/txGR3"
+                    app:layout_constraintHorizontal_bias="0.74"
+                    app:layout_constraintStart_toEndOf="@+id/txGR1"
+                    app:layout_constraintStart_toStartOf="@+id/txGR1"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txGR3"
+                    android:textSize="40sp"
+                    android:textColor="#000000"
+                    android:text="Гр3 : "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@+id/txWater1"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txWater1"
+                    android:textSize="40sp"
+                    android:textColor="#000000"
+                    android:text="Полив1 : "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txGR3" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+
+
+
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_menu"
+                android:id="@+id/ibMMenu"
+                android:background="@color/colorBtnGray1"
+                android:layout_marginTop="1dp"
+                android:visibility="visible" />
+
+            <ImageButton
+                android:id="@+id/ibSettings"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="fitCenter"
+                android:background="@color/colorBtnGray1"
+                android:src="@mipmap/ic_sett"
+                android:visibility="visible" />
+
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_win"
+                android:id="@+id/ibAutoWind"
+                android:background="@color/colorBtnGray1"
+                android:layout_marginTop="1dp"
+                android:visibility="visible" />
+
+
+
+
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_fire"
+                android:id="@+id/ibAutoHeat"
+                android:background="@color/colorBtnGray1"
+                android:layout_marginTop="1dp"
+                android:visibility="visible" />
+
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_water"
+                android:id="@+id/ibAutoWater"
+                android:background="@color/colorBtnGray1"
+                android:layout_marginTop="1dp"
+                android:visibility="visible" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
