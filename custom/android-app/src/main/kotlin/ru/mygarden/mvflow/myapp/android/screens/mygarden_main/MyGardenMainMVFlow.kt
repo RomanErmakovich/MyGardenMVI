@@ -6,9 +6,13 @@ import net.pedroloureiro.mvflow.MVFlow
 import net.pedroloureiro.mvflow.Reducer
 import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.arduino.ArdBean
 import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.db.AppDatabase
+import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.db.DB
 import ru.mygarden.mvflow.myapp.android.screens.nastr.NastrBean
+import javax.inject.Inject
 
 object MyGardenMainMVFlow {
+
+    var db: AppDatabase?= null
 
     sealed class Effect {
         object DataRefreshed: Effect()
@@ -49,23 +53,25 @@ object MyGardenMainMVFlow {
     }
 
     sealed class Action {
+        var db: AppDatabase?= MyGardenMainMVFlow.db
 
         data class Open1Gr (val fromWeb : Boolean) : Action()
         data class Open12Gr (val fromWeb : Boolean) : Action()
         data class Open123Gr (val fromWeb : Boolean) : Action()
 
-        data class GetAllInfo (val db : AppDatabase? = null, val fromWeb : Boolean) : Action()
+        data class GetAllInfo (/*val db : AppDatabase? = null, */val fromWeb : Boolean) : Action()
         data class CloserAllGr (val fromWeb : Boolean) : Action()
         data class HeatOn (val fromWeb : Boolean) : Action()
-        data class HeatOff (val db : AppDatabase? = null, val fromWeb : Boolean) : Action()
-        data class Water1On (val db : AppDatabase? = null, val fromWeb : Boolean) : Action()
+        data class HeatOff (/*val db : AppDatabase? = null,*/ val fromWeb : Boolean) : Action()
+        data class Water1On (/*val db : AppDatabase? = null,*/ val fromWeb : Boolean) : Action()
         data class Water1Off (val fromWeb : Boolean) : Action()
 
-        data class AutoWater (val db : AppDatabase? = null, val fromWeb : Boolean) : Action()
-        data class AutoHeat (val db : AppDatabase? = null, val fromWeb : Boolean) : Action()
-        data class AutoWind (val db : AppDatabase? = null, val fromWeb : Boolean) : Action()
-        data class GetAllAutoState (val db : AppDatabase? = null, val fromWeb : Boolean) : Action()
-
+        data class AutoWater (/*val db : AppDatabase? = null,*/ val fromWeb : Boolean) : Action()
+        data class AutoHeat (/*val db : AppDatabase? = null,*/ val fromWeb : Boolean) : Action()
+        data class AutoWind (/*val db : AppDatabase? = null,*/ val fromWeb : Boolean) : Action()
+        data class GetAllAutoState (/*val db : AppDatabase? = null,*/ val fromWeb : Boolean) :
+        Action()
+/*
         data class AutoRobotWind (val db : AppDatabase? = null) : Action()
         data class AutoRobotOthers (val db : AppDatabase? = null) : Action()
 
@@ -74,6 +80,16 @@ object MyGardenMainMVFlow {
         data class GetPar (val db : AppDatabase? = null) : Action()
 
         data class Heat10On (val db : AppDatabase? = null, val fromWeb : Boolean) : Action()
+*/
+
+        object AutoRobotWind : Action()
+        object AutoRobotOthers : Action()
+
+        object GetLastWater : Action()
+
+        object GetPar : Action()
+
+        data class Heat10On (/*val db : AppDatabase? = null,*/ val fromWeb : Boolean) : Action()
 
         object GetIP: Action()
     }

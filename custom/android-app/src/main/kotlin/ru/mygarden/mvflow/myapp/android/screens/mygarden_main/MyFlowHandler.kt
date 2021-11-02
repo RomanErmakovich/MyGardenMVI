@@ -80,9 +80,9 @@ object MyFlowHandler {
             }
 
             is MyGardenMainMVFlow.Action.AutoHeat-> flow {
-                var pf = CommonFun.getParamBoolean("autoHeat", action.db!!)
+                var pf = CommonFun.instance.getParamBoolean("autoHeat", action.db)
                 if (pf == false) pf = true else if (pf == true) pf = false
-                CommonFun.setParamBoolean("autoHeat", pf!!, action.db)
+                CommonFun.instance.setParamBoolean("autoHeat", pf!!, action.db)
                 emit(MyGardenMainMVFlow.Mutation.ChangeAutoHeat(pf))
                 try {
                     if (action.fromWeb) emit(
@@ -98,9 +98,9 @@ object MyFlowHandler {
             }
 
             is MyGardenMainMVFlow.Action.AutoWind -> flow {
-                var pw = CommonFun.getParamBoolean("autoWind", action.db!!)
+                var pw = CommonFun.instance.getParamBoolean("autoWind", action.db)
                 if (pw == false) pw = true else if (pw == true) pw = false
-                CommonFun.setParamBoolean("autoWind", pw!!, action.db)
+                CommonFun.instance.setParamBoolean("autoWind", pw!!, action.db)
                 emit(MyGardenMainMVFlow.Mutation.ChangeAutoWind(pw))
                 try {
                     if (action.fromWeb) emit(
@@ -116,9 +116,9 @@ object MyFlowHandler {
             }
 
             is MyGardenMainMVFlow.Action.AutoWater -> flow {
-                var pp = CommonFun.getParamBoolean("autoWater", action.db!!)
+                var pp = CommonFun.instance.getParamBoolean("autoWater", action.db)
                 if (pp == false) pp = true else if (pp == true) pp = false
-                CommonFun.setParamBoolean("autoWater", pp!!, action.db)
+                CommonFun.instance.setParamBoolean("autoWater", pp!!, action.db)
                 emit(MyGardenMainMVFlow.Mutation.ChangeAutoWater(pp))
                 try {
                     if (action.fromWeb) emit(
@@ -134,19 +134,19 @@ object MyFlowHandler {
             }
 
             is MyGardenMainMVFlow.Action.GetAllAutoState -> flow {
-                val p_p: Boolean = CommonFun.getParamBoolean(
-                    "autoWater", action
-                        .db!!
+                val p_p: Boolean = CommonFun.instance.getParamBoolean(
+                    "autoWater"
+                    , action.db
                 )!!
                 emit(MyGardenMainMVFlow.Mutation.ChangeAutoWater(p_p))
-                val p_w: Boolean = CommonFun.getParamBoolean(
-                    "autoWind", action
-                        .db
+                val p_w: Boolean = CommonFun.instance.getParamBoolean(
+                    "autoWind"
+                    , action.db
                 )!!
                 emit(MyGardenMainMVFlow.Mutation.ChangeAutoWind(p_w))
-                val p_f: Boolean = CommonFun.getParamBoolean(
-                    "autoHeat", action
-                        .db
+                val p_f: Boolean = CommonFun.instance.getParamBoolean(
+                    "autoHeat"
+                    , action.db
                 )!!
                 emit(MyGardenMainMVFlow.Mutation.ChangeAutoHeat(p_f))
                 if (action.fromWeb) effects.send(MyGardenMainMVFlow.Effect.DataRefreshed)
@@ -157,7 +157,7 @@ object MyFlowHandler {
                 try {
                     emit(
                         MyGardenMainMVFlow.Mutation.ArdCommandQuery(
-                            CommonFun.ardCommandHandler(ApiClient.apiService.open1Gr
+                            CommonFun.instance.ardCommandHandler(ApiClient.apiService.open1Gr
                                 (), state.value!!)
                         )
                     )
@@ -175,7 +175,7 @@ object MyFlowHandler {
 
                     emit(
                         MyGardenMainMVFlow.Mutation.ArdCommandQuery(
-                            CommonFun.ardCommandHandler(ApiClient.apiService
+                            CommonFun.instance.ardCommandHandler(ApiClient.apiService
                                 .open12Gr(), state.value!!)
                         )
                     )
@@ -192,7 +192,8 @@ object MyFlowHandler {
 
                     emit(
                         MyGardenMainMVFlow.Mutation.ArdCommandQuery(
-                            CommonFun.ardCommandHandler(ApiClient.apiService.open123Gr(), state.value!!)
+                            CommonFun.instance.ardCommandHandler(ApiClient.apiService.open123Gr(), state
+                                .value!!)
                         )
                     )
                 } catch (e: Exception) {
@@ -211,9 +212,9 @@ object MyFlowHandler {
                 }
                 emit(
                     MyGardenMainMVFlow.Mutation.ChangeLastWaterL1(
-                        CommonFun.getParam(
-                            "p_last_line1",
-                            action.db!!
+                        CommonFun.instance.getParam(
+                            "p_last_line1"
+                            , action.db
                         )
                     )
                 )
@@ -226,7 +227,8 @@ object MyFlowHandler {
                 try {
                     emit(
                         MyGardenMainMVFlow.Mutation.ArdCommandQuery(
-                            CommonFun.ardCommandHandler(ApiClient.apiService.closeAllGr(), state.value!!)
+                            CommonFun.instance.ardCommandHandler(ApiClient.apiService.closeAllGr(), state
+                                .value!!)
                         )
                     )
                 } catch (e: Exception) {
@@ -241,7 +243,8 @@ object MyFlowHandler {
                 try {
                     emit(
                         MyGardenMainMVFlow.Mutation.ArdCommandQuery(
-                            CommonFun.ardCommandHandler(ApiClient.apiService.heat1(), state.value!!)
+                            CommonFun.instance.ardCommandHandler(ApiClient.apiService.heat1(), state
+                                .value!!)
                         )
                     )
                 } catch (e: Exception) {
@@ -253,12 +256,13 @@ object MyFlowHandler {
 
             is MyGardenMainMVFlow.Action.HeatOff -> flow {
                 emit(MyGardenMainMVFlow.Mutation.BackgroundJobStarted)
-                CommonFun.setParamBoolean("heat10", false, action.db!!)
+                CommonFun.instance.setParamBoolean("heat10", false, action.db)
                 emit(MyGardenMainMVFlow.Mutation.ChangeHeat10(false))
                 try {
                     emit(
                         MyGardenMainMVFlow.Mutation.ArdCommandQuery(
-                            CommonFun.ardCommandHandler(ApiClient.apiService.heat0(), state.value!!)
+                            CommonFun.instance.ardCommandHandler(ApiClient.apiService.heat0(), state
+                                .value!!)
                         )
                     )
                 } catch (e: Exception) {
@@ -273,7 +277,7 @@ object MyFlowHandler {
                 try {
                     emit(
                         MyGardenMainMVFlow.Mutation.ArdCommandQuery(
-                            CommonFun.ardCommandHandler(ApiClient.apiService.water1(), state
+                            CommonFun.instance.ardCommandHandler(ApiClient.apiService.water1(), state
                                 .value!!)
                         )
                     )
@@ -282,8 +286,8 @@ object MyFlowHandler {
                 }
                 emit(
                     MyGardenMainMVFlow.Mutation.ChangeLastWaterL1(
-                        CommonFun.updateLastPolivL1
-                            (action.db!!)
+                        CommonFun.instance.updateLastPolivL1
+                            (action.db)
                     )
                 )
                 emit(MyGardenMainMVFlow.Mutation.BackgroundJobFinished)
@@ -295,7 +299,7 @@ object MyFlowHandler {
                 try {
                     emit(
                         MyGardenMainMVFlow.Mutation.ArdCommandQuery(
-                            CommonFun.ardCommandHandler(ApiClient.apiService.water0(), state
+                            CommonFun.instance.ardCommandHandler(ApiClient.apiService.water0(), state
                                 .value!!)
                         )
                     )
@@ -309,9 +313,9 @@ object MyFlowHandler {
             is MyGardenMainMVFlow.Action.GetLastWater -> flow {
                 emit(
                     MyGardenMainMVFlow.Mutation.ChangeLastWaterL1(
-                        CommonFun.getParam(
-                            "p_last_line1",
-                            action.db!!
+                        CommonFun.instance.getParam(
+                            "p_last_line1"
+                            , action.db
                         )
                     )
                 )
@@ -320,9 +324,9 @@ object MyFlowHandler {
             is MyGardenMainMVFlow.Action.GetPar -> flow {
                 effects.send(
                     MyGardenMainMVFlow.Effect.ShowToast(
-                        CommonFun.getParam(
-                            "t_stop_water_line2",
-                            action.db!!
+                        CommonFun.instance.getParam(
+                            "t_stop_water_line2"
+                            , action.db
                         )
                     )
                 )
@@ -333,8 +337,8 @@ object MyFlowHandler {
                 val formatFull: DateFormat =
                     SimpleDateFormat("dd.MM.yyyy HH:mm:ss")
                 var dateStart = Date()
-                CommonFun.setParamBoolean("heat10", true, action.db!!)
-                CommonFun.setParam("t_start_heat_fact", formatFull.format(dateStart), action.db)
+                CommonFun.instance.setParamBoolean("heat10", true, action.db)
+                CommonFun.instance.setParam("t_start_heat_fact", formatFull.format(dateStart), action.db)
                 emit(MyGardenMainMVFlow.Mutation.ChangeHeat10(true))
                 emit(MyGardenMainMVFlow.Mutation.BackgroundJobFinished)
                 kotlinx.coroutines.delay(500)
@@ -344,10 +348,10 @@ object MyFlowHandler {
 
             is MyGardenMainMVFlow.Action.AutoRobotWind -> flow {
                 // АвтоПроветривание
-                if (CommonFun.getParamBoolean("autoWind", action.db!!) == true) {
-                    val t_gr1 = CommonFun.getParamInt("t_gr1", action.db)
-                    val t_gr2 = CommonFun.getParamInt("t_gr2", action.db)
-                    val t_gr3 = CommonFun.getParamInt("t_gr3", action.db)
+                if (CommonFun.instance.getParamBoolean("autoWind", action.db) == true) {
+                    val t_gr1 = CommonFun.instance.getParamInt("t_gr1", action.db)
+                    val t_gr2 = CommonFun.instance.getParamInt("t_gr2", action.db)
+                    val t_gr3 = CommonFun.instance.getParamInt("t_gr3", action.db)
 
                     val vgr1 = state.getBeanByName("GR1")!!.value
                     val vgr2 = state.getBeanByName("GR2")!!.value
@@ -360,7 +364,7 @@ object MyFlowHandler {
 
                                 emit(
                                     MyGardenMainMVFlow.Mutation.ArdCommandQuery(
-                                        CommonFun.ardCommandHandler(ApiClient.apiService
+                                        CommonFun.instance.ardCommandHandler(ApiClient.apiService
                                             .open123Gr(), state.value!!)
                                     )
                                 )
@@ -375,7 +379,8 @@ object MyFlowHandler {
 
                                 emit(
                                     MyGardenMainMVFlow.Mutation.ArdCommandQuery(
-                                        CommonFun.ardCommandHandler(ApiClient.apiService.open12Gr(), state.value!!)
+                                        CommonFun.instance.ardCommandHandler(ApiClient.apiService
+                                            .open12Gr(), state.value!!)
                                     )
                                 )
                             } catch (e: Exception) {
@@ -390,7 +395,8 @@ object MyFlowHandler {
 
                                 emit(
                                     MyGardenMainMVFlow.Mutation.ArdCommandQuery(
-                                        CommonFun.ardCommandHandler(ApiClient.apiService.open1Gr(), state.value!!)
+                                        CommonFun.instance.ardCommandHandler(ApiClient.apiService.open1Gr
+                                            (), state.value!!)
                                     )
                                 )
                             } catch (e: Exception) {
@@ -404,7 +410,8 @@ object MyFlowHandler {
 
                                 emit(
                                     MyGardenMainMVFlow.Mutation.ArdCommandQuery(
-                                        CommonFun.ardCommandHandler(ApiClient.apiService.closeAllGr(), state.value!!)
+                                        CommonFun.instance.ardCommandHandler(ApiClient.apiService
+                                            .closeAllGr(), state.value!!)
                                     )
                                 )
                             } catch (e: Exception) {
@@ -418,12 +425,12 @@ object MyFlowHandler {
             is MyGardenMainMVFlow.Action.AutoRobotOthers -> flow {
 
                 // АвтоПодогрев
-                if (CommonFun.getParamBoolean("autoHeat", action.db!!) == true) {
+                if (CommonFun.instance.getParamBoolean("autoHeat", action.db) == true) {
                     val formatDateMinute: DateFormat =
                         SimpleDateFormat("dd.MM.yyyy HH:mm")
                     val formatDate: DateFormat =
                         SimpleDateFormat("dd.MM.yyyy")
-                    var nb = CommonFun.getNastrBean(action.db)
+                    var nb = CommonFun.instance.getNastrBean(action.db)
                     var ds =  formatDateMinute.parse(formatDate.format(Date())+" "+nb
                         .t_start_autoheat
                         .replace("\n", ""))
@@ -438,18 +445,18 @@ object MyFlowHandler {
                     }
                     var curr_d = Date()
                     if (curr_d.after(ds) && curr_d.before(dp)){
-                        CommonFun.setParam("t_start_heat_fact", formatDateMinute.format(ds!!)+":00",
-                            action.db)
-                        CommonFun.setParamBoolean("heat10", true, action.db)
+                        CommonFun.instance.setParam("t_start_heat_fact", formatDateMinute.format(ds!!)
+                        +":00", action.db)
+                        CommonFun.instance.setParamBoolean("heat10", true, action.db)
                         emit(MyGardenMainMVFlow.Mutation.ChangeHeat10(true))
                     } else {
-                        CommonFun.setParamBoolean("heat10", false, action.db)
+                        CommonFun.instance.setParamBoolean("heat10", false, action.db)
                         emit(MyGardenMainMVFlow.Mutation.ChangeHeat10(false))
                         if (state.getBeanByName("TP1")!!.value.toInt() != 0) {
                             try {
                                 emit(
                                     MyGardenMainMVFlow.Mutation.ArdCommandQuery(
-                                        CommonFun.ardCommandHandler(ApiClient.apiService.heat0(),
+                                        CommonFun.instance.ardCommandHandler(ApiClient.apiService.heat0(),
                                             state.value!!)
                                     )
                                 )
@@ -463,8 +470,8 @@ object MyFlowHandler {
 
 
                 //подогрев 10
-                if (CommonFun.getParamBoolean("heat10", action.db) == true) {
-                    var tstart = CommonFun.getParam("t_start_heat_fact", action.db)
+                if (CommonFun.instance.getParamBoolean("heat10", action.db) == true) {
+                    var tstart = CommonFun.instance.getParam("t_start_heat_fact", action.db)
                     val formatFull: DateFormat =
                         SimpleDateFormat("dd.MM.yyyy HH:mm:ss")
                     var interval = getDateDiff(formatFull.parse(tstart)!!, Date(), TimeUnit.MINUTES)
@@ -473,7 +480,7 @@ object MyFlowHandler {
                             if (state.getBeanByName("TP1")!!.value.toInt() != 1) {
                                 emit(
                                     MyGardenMainMVFlow.Mutation.ArdCommandQuery(
-                                        CommonFun.ardCommandHandler(ApiClient.apiService.heat1(),
+                                        CommonFun.instance.ardCommandHandler(ApiClient.apiService.heat1(),
                                             state.value!!)
                                     )
                                 )
@@ -482,7 +489,7 @@ object MyFlowHandler {
                             if (state.getBeanByName("TP1")!!.value.toInt() != 0) {
                                 emit(
                                     MyGardenMainMVFlow.Mutation.ArdCommandQuery(
-                                        CommonFun.ardCommandHandler(ApiClient.apiService
+                                        CommonFun.instance.ardCommandHandler(ApiClient.apiService
                                             .heat0(), state.value!!)
                                     )
                                 )
@@ -496,11 +503,11 @@ object MyFlowHandler {
 
 
                 // АвтоПолив
-                if (CommonFun.getParamBoolean("autoWater", action.db) == true) {
-                    val sStartL1 = CommonFun.getParam("t_start_water_line1", action.db)
-                    val sStopL1 = CommonFun.getParam("t_stop_water_line1", action.db)
-                    val sLastL1 = CommonFun.getParam("p_last_line1", action.db)
-                    val cherezL1 = CommonFun.getParam("p_cherez_d_line1", action.db).toInt()
+                if (CommonFun.instance.getParamBoolean("autoWater", action.db) == true) {
+                    val sStartL1 = CommonFun.instance.getParam("t_start_water_line1", action.db)
+                    val sStopL1 = CommonFun.instance.getParam("t_stop_water_line1", action.db)
+                    val sLastL1 = CommonFun.instance.getParam("p_last_line1", action.db)
+                    val cherezL1 = CommonFun.instance.getParam("p_cherez_d_line1", action.db).toInt()
 
                     val curDate = Date()
 
@@ -527,21 +534,21 @@ object MyFlowHandler {
                             try {
                                 emit(
                                     MyGardenMainMVFlow.Mutation.ChangeLastWaterL1(
-                                        CommonFun.updateLastPolivL1
+                                        CommonFun.instance.updateLastPolivL1
                                             (action.db)
                                     )
                                 )
                                 emit(
                                     MyGardenMainMVFlow.Mutation.ArdCommandQuery(
-                                        CommonFun.ardCommandHandler(ApiClient
+                                        CommonFun.instance.ardCommandHandler(ApiClient
                                             .apiService.water1(), state.value!!)
                                     )
                                 )
                                 emit(
                                     MyGardenMainMVFlow.Mutation.ChangeLastWaterL1(
-                                        CommonFun.getParam(
-                                            "p_last_line1",
-                                            action.db
+                                        CommonFun.instance.getParam(
+                                            "p_last_line1"
+                                            , action.db
                                         )
                                     )
                                 )
@@ -556,7 +563,7 @@ object MyFlowHandler {
                             try {
                                 emit(
                                     MyGardenMainMVFlow.Mutation.ArdCommandQuery(
-                                        CommonFun.ardCommandHandler(ApiClient
+                                        CommonFun.instance.ardCommandHandler(ApiClient
                                             .apiService.water0(), state.value!!)
                                     )
                                 )

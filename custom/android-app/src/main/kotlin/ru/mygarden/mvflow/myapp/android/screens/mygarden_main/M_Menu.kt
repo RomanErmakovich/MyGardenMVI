@@ -2,6 +2,8 @@ package ru.mygarden.mvflow.myapp.android.screens.mygarden_main
 
 import android.app.AlertDialog
 import android.content.Context
+import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.db.AppDatabase
+import javax.inject.Inject
 
 object M_Menu {
 
@@ -99,8 +101,7 @@ object M_Menu {
                                        */
                                                 mMenuListener!!.onM_MenuAction(MyGardenMainMVFlow
                                                     .Action
-                                                    .Water1On((context as MyGardenMainActivity)
-                                                        .db!!,
+                                                    .Water1On(
                                                         false))
                                             }
                                             "ВЫключить" -> {
@@ -159,12 +160,12 @@ object M_Menu {
                                 "Подогрев 1 (чередование 10 мин.) включить" -> {
                                     //log("ЛОКАЛЬНО Команда меню : $m_menu_act $sub_menu_act")
                                     mMenuListener!!.onM_MenuAction(MyGardenMainMVFlow.Action
-                                        .Heat10On((context as MyGardenMainActivity).db!!, false))
+                                        .Heat10On(false))
                                 }
                                 "Подогрев 1 вЫключить" -> {
                                     //log("ЛОКАЛЬНО Команда меню : $m_menu_act $sub_menu_act")
                                     mMenuListener!!.onM_MenuAction(MyGardenMainMVFlow.Action
-                                        .HeatOff((context as MyGardenMainActivity).db, false))
+                                        .HeatOff( false))
                                 }
                             }
                         }

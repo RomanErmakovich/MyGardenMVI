@@ -1,5 +1,6 @@
 package ru.mygarden.mvflow.myapp.android.screens.mygarden_main
 
+import android.app.Application
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -22,34 +23,41 @@ import ru.mygarden.mvflow.myapp.android.screens.home.HomeActivity
 import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.MyGardenMainMVFlow.Action
 import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.MyGardenMainMVFlow.State
 import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.CommonFun
+import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.db.AppDatabase
 import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.db.ParamDao
 import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.sms.SMSReceiver
 import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.sms.SendMessage
 import ru.mygarden.mvflow.myapp.android.screens.nastr.NastrActivity
 import java.util.*
+import javax.inject.Inject
 
 
 class MyGardenMainActivity : WebServerActivity(), M_MenuListener {
 
-    val actionQeue: Queue<Action> = LinkedList<Action>()
+
     val viewModel: MyGardenMainViewModel by viewModels()
 
     var mySMSReceiver: BroadcastReceiver? = null
-    var dao:ParamDao? = null
+    //var dao:ParamDao? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val binding = MygardenMainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
         title = "Программа МОЙ САД"
+
+        val dao: ParamDao = db!!.paramDao()
 /*
         val db = Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java, "databasename2"
         )/*.addMigrations(MIGRATION_1_2)*/.allowMainThreadQueries().build()
 */
-        dao = db!!.paramDao()
-        dao!!.insertParams()
+        //val db = AppDatabase().getDatabase(applicationContext)
+
+        //dao = db!!.paramDao()
+        dao.insertParams()
 
 
 //        actionQeue.add(Action.GetIP)
@@ -69,31 +77,31 @@ class MyGardenMainActivity : WebServerActivity(), M_MenuListener {
                 )
 
                 if (state.value != null) {
-                    binding.tvTN.text = CommonFun.getBeanStr(state.getBeanByName("T1O")!!, db!!)
-                    binding.tvTVV.text = CommonFun.getBeanStr(state.getBeanByName("T1V")!!, db!!)
-                    binding.tvVVV.text = CommonFun.getBeanStr(state.getBeanByName("H1V")!!, db!!)
-                    binding.tvVP.text = CommonFun.getBeanStr(state.getBeanByName("VP1")!!, db!!)
+                    binding.tvTN.text = CommonFun.instance.getBeanStr(state.getBeanByName("T1O")!!, db)
+                    binding.tvTVV.text = CommonFun.instance.getBeanStr(state.getBeanByName("T1V")!!, db)
+                    binding.tvVVV.text = CommonFun.instance.getBeanStr(state.getBeanByName("H1V")!!, db)
+                    binding.tvVP.text = CommonFun.instance.getBeanStr(state.getBeanByName("VP1")!!, db)
                     binding.tvLastWater.text = "Посл. полив : " + state.lastWaterL1
 
                     val GR1 = state.getBeanByName("GR1")!!
-                    binding.txGR1.text = CommonFun.getBeanStr(GR1, db!!)
-                    binding.txGR1.setTextColor(CommonFun.getBeanStrColor(GR1, db!!))
+                    binding.txGR1.text = CommonFun.instance.getBeanStr(GR1, db)
+                    binding.txGR1.setTextColor(CommonFun.instance.getBeanStrColor(GR1, db))
 
                     val GR2 = state.getBeanByName("GR2")!!
-                    binding.txGR2.text = CommonFun.getBeanStr(GR2, db!!)
-                    binding.txGR2.setTextColor(CommonFun.getBeanStrColor(GR2, db!!))
+                    binding.txGR2.text = CommonFun.instance.getBeanStr(GR2, db)
+                    binding.txGR2.setTextColor(CommonFun.instance.getBeanStrColor(GR2, db))
 
                     val GR3 = state.getBeanByName("GR3")!!
-                    binding.txGR3.text = CommonFun.getBeanStr(GR3, db!!)
-                    binding.txGR3.setTextColor(CommonFun.getBeanStrColor(GR3, db!!))
+                    binding.txGR3.text = CommonFun.instance.getBeanStr(GR3, db)
+                    binding.txGR3.setTextColor(CommonFun.instance.getBeanStrColor(GR3, db))
 
                     val PL1 = state.getBeanByName("PL1")!!
-                    binding.txWater1.text = CommonFun.getBeanStr(PL1, db!!)
-                    binding.txWater1.setTextColor(CommonFun.getBeanStrColor(PL1, db!!))
+                    binding.txWater1.text = CommonFun.instance.getBeanStr(PL1, db)
+                    binding.txWater1.setTextColor(CommonFun.instance.getBeanStrColor(PL1, db))
 
                     val TP1 = state.getBeanByName("TP1")!!
-                    binding.txTP1.text = CommonFun.getBeanStr(TP1, db!!)
-                    binding.txTP1.setTextColor(CommonFun.getBeanStrColor(TP1, db!!))
+                    binding.txTP1.text = CommonFun.instance.getBeanStr(TP1, db)
+                    binding.txTP1.setTextColor(CommonFun.instance.getBeanStrColor(TP1, db))
 
 
 
@@ -102,10 +110,12 @@ class MyGardenMainActivity : WebServerActivity(), M_MenuListener {
                         binding.tvAutoWater.text = "Автополив : Вкл"
                         binding.tvAutoWater.setTextColor(Color.RED)
                     } else {
-                        binding.ibAutoWater.setBackgroundColor(ContextCompat.getColor(
-                            this@MyGardenMainActivity,
-                            R.color.colorBtnGray1
-                        ))
+                        binding.ibAutoWater.setBackgroundColor(
+                            ContextCompat.getColor(
+                                this@MyGardenMainActivity,
+                                R.color.colorBtnGray1
+                            )
+                        )
                         binding.tvAutoWater.text = "Автополив : выкл"
                         binding.tvAutoWater.setTextColor(Color.BLACK)
                     }
@@ -131,10 +141,12 @@ class MyGardenMainActivity : WebServerActivity(), M_MenuListener {
                         binding.tvAutoWind.text = "Автопров : Вкл"
                         binding.tvAutoWind.setTextColor(Color.RED)
                     } else {
-                        binding.ibAutoWind.setBackgroundColor(ContextCompat.getColor(
-                            this@MyGardenMainActivity,
-                            R.color.colorBtnGray1
-                        ))
+                        binding.ibAutoWind.setBackgroundColor(
+                            ContextCompat.getColor(
+                                this@MyGardenMainActivity,
+                                R.color.colorBtnGray1
+                            )
+                        )
                         binding.tvAutoWind.text = "Автопров : выкл"
                         binding.tvAutoWind.setTextColor(Color.BLACK)
                     }
@@ -156,36 +168,34 @@ class MyGardenMainActivity : WebServerActivity(), M_MenuListener {
 
 
                 binding.ibAutoWater.setOnClickListener {
-                    offer(Action.AutoWater(db, false))
+                    //offer(Action.AutoWater(/*db,*/ false))
+                    actionQeue.add(Action.AutoWater(false))
                 }
                 binding.ibAutoHeat.setOnClickListener {
-                    offer(Action.AutoHeat(db, false))
+                    //offer(Action.AutoHeat(/*db,*/ false))
+                    actionQeue.add(Action.AutoHeat(false))
                 }
                 binding.ibAutoWind.setOnClickListener {
-                    offer(Action.AutoWind(db, false))
+                    //offer(Action.AutoWind(/*db,*/ false))
+                    actionQeue.add(Action.AutoWind(false))
                 }
 
-                val jobQueue = lifecycleScope.launch {
-                    while (true) {
-                        if (actionQeue.size > 0) {
-                            offer(actionQeue.remove())
-                        }
-                        delay(2000)
-                    }
-                }
-                jobQueue.start()
+
 
 
 
                 val jobGetAllAutoState = lifecycleScope.launch {
                     delay(1000)
-                    offer(Action.GetAllAutoState(db, false))
+                    //offer(Action.GetAllAutoState(/*db,*/ false))
+                    actionQeue.add(Action.GetAllAutoState(false))
                 }
                 jobGetAllAutoState.start()
 
                 val jobInfo = lifecycleScope.launch {
                     while (true) {
-                        offer(Action.GetAllInfo(db, false))
+                        delay(1000)
+                        //offer(Action.GetAllInfo(/*db,*/ false))
+                        actionQeue.add(Action.GetAllInfo(false))
                         delay(30000)
                     }
                 }
@@ -195,7 +205,8 @@ class MyGardenMainActivity : WebServerActivity(), M_MenuListener {
                 val jobRobotOthers = lifecycleScope.launch {
                     delay(7000)
                     while (true) {
-                        offer(Action.AutoRobotOthers(db))
+                        //offer(Action.AutoRobotOthers/*(db)*/)
+                        actionQeue.add(Action.AutoRobotOthers)
                         delay(60000)
                     }
                 }
@@ -206,7 +217,8 @@ class MyGardenMainActivity : WebServerActivity(), M_MenuListener {
                 val jobRobotWind = lifecycleScope.launch {
                     delay(5000)
                     while (true) {
-                        offer(Action.AutoRobotWind(db))
+                        //offer(Action.AutoRobotWind/*(db)*/)
+                        actionQeue.add(Action.AutoRobotWind)
                         delay(30 * 60000)
                     }
                 }
@@ -219,6 +231,9 @@ class MyGardenMainActivity : WebServerActivity(), M_MenuListener {
             viewModel.mvFlow.takeView(this, view)
         }
         lifecycleScope.launchWhenStarted {
+
+            //viewModel.mvFlow.addExternalActions()
+
             viewModel.mvFlow.observeEffects().collect {
                 if (it is MyGardenMainMVFlow.Effect.ShowToast) {
                     Toast.makeText(this@MyGardenMainActivity, it.message, Toast.LENGTH_SHORT).show()
@@ -236,8 +251,10 @@ class MyGardenMainActivity : WebServerActivity(), M_MenuListener {
 
                 if (it is MyGardenMainMVFlow.Effect.RemoteIP) {
                     //println(it.ip + " *******************************************")
-                    SendMessage().sendSMS("8" + dao!!.getByMame("remote_phone")!!.value_!!, it.ip,
-                        this@MyGardenMainActivity)
+                    SendMessage().sendSMS(
+                        "8" + dao.getByMame("remote_phone")!!.value_!!, it.ip,
+                        this@MyGardenMainActivity
+                    )
                 }
 
             }

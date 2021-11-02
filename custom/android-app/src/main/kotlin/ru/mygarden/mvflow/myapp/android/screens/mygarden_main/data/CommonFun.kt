@@ -1,5 +1,6 @@
 package ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data
 
+import android.app.Application
 import android.graphics.Color
 import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.MyGardenMainMVFlow
 import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.arduino.ArdBean
@@ -12,13 +13,35 @@ import java.net.SocketException
 import java.text.Format
 import java.text.SimpleDateFormat
 import java.util.*
+import javax.inject.Inject
 import kotlin.collections.ArrayList
 
-object CommonFun {
+class CommonFun {
 
-     const val hostIP = "192.168.1.163"
+/*
+     constructor (){
+          (MGApplication).component!!.inject(this)
+     }
+*/
+
+     private object HOLDER {
+          val INSTANCE = CommonFun()
+     }
+
+     companion object {
+          val instance: CommonFun by lazy { HOLDER.INSTANCE }
+     }
+
+
+/*
+     var db: AppDatabase? = null
+     @Inject set
+*/
+
+     val hostIP = "192.168.0.210"
 
      var formatDOnly: Format = SimpleDateFormat("dd.MM.yyyy")
+
 
 
      fun ardCommandHandler(bean: ArdBean, beanList: List<ArdBean>):List<ArdBean>{
@@ -70,7 +93,7 @@ object CommonFun {
      }
 
 
-     fun getBeanStr(bean: ArdBean, db: AppDatabase): String {
+     fun getBeanStr(bean: ArdBean, db:AppDatabase?): String {
           return when (bean.name) {
                "H1V" -> "Влажность в тепл. : " + bean.value
                "T1V" -> "Темпер. в тепл. : " + bean.value
@@ -111,7 +134,7 @@ object CommonFun {
 
      }
 
-     fun getBeanStrColor(bean: ArdBean, db: AppDatabase): Int {
+     fun getBeanStrColor(bean: ArdBean, db:AppDatabase?): Int {
           return when (bean.name) {
                "H1V" -> Color.BLACK
                "T1V" -> Color.BLACK
@@ -156,28 +179,28 @@ object CommonFun {
           return null
      }
 
-     fun setParam(name: String, value: String, db: AppDatabase) {
-          db.paramDao().insert(ParamBean(name, value))
+     fun setParam(name: String, value: String, db:AppDatabase?) {
+          db!!.paramDao().insert(ParamBean(name, value))
      }
 
-     fun getParam(name: String, db: AppDatabase): String {
-          return db.paramDao().getByMame(name)!!.value_!!
+     fun getParam(name: String, db:AppDatabase?): String {
+          return db!!.paramDao().getByMame(name)!!.value_!!
      }
 
-     fun setParamInt(name: String, value: Int, db: AppDatabase) {
-          db.paramDao().insert(ParamBean(name, value.toString()))
+     fun setParamInt(name: String, value: Int, db:AppDatabase?) {
+          db!!.paramDao().insert(ParamBean(name, value.toString()))
      }
 
-     fun getParamInt(name: String, db: AppDatabase): Int {
-          return (db.paramDao().getByMame(name)!!.value_!!).toInt()
+     fun getParamInt(name: String, db:AppDatabase?): Int {
+          return (db!!.paramDao().getByMame(name)!!.value_!!).toInt()
      }
 
-     fun setParamBoolean(name: String, value: Boolean, db: AppDatabase) {
+     fun setParamBoolean(name: String, value: Boolean, db:AppDatabase?) {
           if (value) setParamInt(name, 1, db)
           else setParamInt(name, 0, db)
      }
 
-     fun getParamBoolean(name: String, db: AppDatabase): Boolean? {
+     fun getParamBoolean(name: String, db:AppDatabase?): Boolean? {
           if (getParamInt(name, db) == 1)
                return true
           else if (getParamInt(name, db) == 0)
@@ -186,9 +209,9 @@ object CommonFun {
      }
 
 
-     fun getNastrBean(db: AppDatabase): NastrBean {
+     fun getNastrBean(db:AppDatabase?): NastrBean {
 
-          val l = db.paramDao().getAll()
+          val l = db!!.paramDao().getAll()
           val m = l!!.associate({ Pair(it.name_, it.value_) })
           val nb = NastrBean()
           nb.remote_phone = m.get("remote_phone")!!
@@ -209,7 +232,7 @@ object CommonFun {
           return nb
      }
 
-     fun saveNastrBean(nastrBean: NastrBean, db: AppDatabase) {
+     fun saveNastrBean(nastrBean: NastrBean, db:AppDatabase?) {
           setParam("remote_phone", nastrBean.remote_phone, db)
           setParam("t_start_water_line1", nastrBean.t_start_water_line1, db)
           setParam("t_stop_water_line1", nastrBean.t_stop_water_line1, db)
@@ -226,7 +249,7 @@ object CommonFun {
           setParam("t_stop_autoheat", nastrBean.t_stop_autoheat, db)
      }
 
-     fun updateLastPolivL1(db: AppDatabase): String {
+     fun updateLastPolivL1(db:AppDatabase?): String {
 
           var res = formatDOnly.format(Date())
           setParam("p_last_line1", res, db)

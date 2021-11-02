@@ -13,15 +13,19 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+
 import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.arduino.ArdBean
 import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.CommonFun
 import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.db.AppDatabase
+import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.db.DB
+//import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.db.DBComponent
 import ru.mygarden.mvflow.myapp.android.screens.nastr.NastrBean
 import java.net.Inet4Address
 import java.net.InetAddress
 import java.net.NetworkInterface
 import java.net.SocketException
 import java.util.*
+import javax.inject.Inject
 import kotlin.collections.HashMap
 
 
@@ -32,8 +36,9 @@ open class WebServerActivity:AppCompatActivity() {
     var fullState : HashSet<ArdBean>? = null
     var resAvailable: Boolean = false
     var nastrBean : NastrBean? = null
-    var db:AppDatabase? = null
+    var db: AppDatabase? =null
     var nastrAvailable: Boolean = false
+    val actionQeue: Queue<MyGardenMainMVFlow.Action> = LinkedList<MyGardenMainMVFlow.Action>()
 
     private fun startAndroidWebServer(): Boolean {
         try{
@@ -56,64 +61,81 @@ open class WebServerActivity:AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         db = Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java, "databasename4"
         )/*.addMigrations(MIGRATION_1_2)*/.allowMainThreadQueries().build()
 
+        MyGardenMainMVFlow.db = db
+
+        //var component = DaggerDBComponent.create()
+
+        //db = DB(applicationContext).getDatabase()!!
         startAndroidWebServer()
 
         val view = object : MyGardenMainMVFlow.View {
             override fun actions(): Flow<MyGardenMainMVFlow.Action> = callbackFlow {
+                val jobQueue = lifecycleScope.launch {
+                    while (true) {
+                        if (actionQeue.size > 0) {
+                            offer(actionQeue.remove())
+                        }
+                        delay(2000)
+                    }
+                }
+                jobQueue.start()
 
                 val jobWebHandler = lifecycleScope.launch {
                     delay(5000)
                         while (true) {
                                 when (strAct){
-                                    "Open1Gr" -> offer(MyGardenMainMVFlow.Action.Open1Gr(true))
-                                    "Open12Gr" -> offer(MyGardenMainMVFlow.Action.Open12Gr(true))
-                                    "Open123Gr" -> offer(MyGardenMainMVFlow.Action.Open123Gr(true))
-                                    "CloserAllGr" -> offer(
+                                    "Open1Gr" -> actionQeue.add(MyGardenMainMVFlow.Action.Open1Gr(true))//offer(MyGardenMainMVFlow.Action.Open1Gr(true))
+                                    "Open12Gr" ->actionQeue.add(MyGardenMainMVFlow.Action.Open12Gr
+                                        (true))// offer(MyGardenMainMVFlow.Action.Open12Gr(true))
+                                    "Open123Gr" -> actionQeue.add(MyGardenMainMVFlow.Action.Open123Gr(true))//offer(MyGardenMainMVFlow.Action.Open123Gr
+                                        // (true))
+                                    "CloserAllGr" -> actionQeue.add(MyGardenMainMVFlow.Action.CloserAllGr(true))/*offer(
                                         MyGardenMainMVFlow.Action.CloserAllGr(
                                             true
                                         )
-                                    )
-                                    "Water1On" -> offer(
+                                    )*/
+                                    "Water1On" -> actionQeue.add(MyGardenMainMVFlow.Action
+                                        .Water1On(true)) /*offer(
                                         MyGardenMainMVFlow.Action.Water1On(
-                                            db,
                                             true
                                         )
-                                    )
-                                    "Water1Off" -> offer(MyGardenMainMVFlow.Action.Water1Off(true))
-                                    "HeatOn" -> offer(MyGardenMainMVFlow.Action.HeatOn(true))
-                                    "Heat10On" -> offer(MyGardenMainMVFlow.Action.Heat10On(db,
+                                    )*/
+                                    "Water1Off" -> actionQeue.add(MyGardenMainMVFlow.Action.Water1Off(true))//offer(MyGardenMainMVFlow.Action.Water1Off
+                                        // (true))
+                                    "HeatOn" -> actionQeue.add(MyGardenMainMVFlow.Action.HeatOn(true))//offer(MyGardenMainMVFlow.Action.HeatOn(true))
+                                    "Heat10On" -> offer(MyGardenMainMVFlow.Action.Heat10On(
                                         true))
-                                    "HeatOff" -> offer(MyGardenMainMVFlow.Action.HeatOff(db, true))
-                                    "GetAllInfo" -> offer(
+                                    "HeatOff" -> actionQeue.add(MyGardenMainMVFlow.Action.HeatOff(true))//offer(MyGardenMainMVFlow.Action.HeatOff(true))
+                                    "GetAllInfo" -> actionQeue.add(MyGardenMainMVFlow.Action.GetAllInfo(true))/*offer(
                                         MyGardenMainMVFlow.Action.GetAllInfo
-                                            (db, true)
-                                    )
+                                            (true)
+                                    )*/
                                     "GetNastrBean" -> {
-                                        nastrBean = CommonFun.getNastrBean(db!!)
+                                        nastrBean = CommonFun.instance.getNastrBean(db)
                                         strAct = ""
                                         resAvailable = true
                                     }
-                                    "AutoHeat" -> offer(
+                                    "AutoHeat" -> actionQeue.add(MyGardenMainMVFlow.Action.AutoHeat(true))/*offer(
                                         MyGardenMainMVFlow.Action.AutoHeat(
-                                            db,
+                                            /*db,*/
                                             true
                                         )
-                                    )
-                                    "AutoWater" -> offer(
+                                    )*/
+                                    "AutoWater" -> actionQeue.add(MyGardenMainMVFlow.Action.AutoWater(true))/*offer(
                                         MyGardenMainMVFlow.Action.AutoWater
-                                            (db, true)
-                                    )
-                                    "AutoWind" -> offer(
+                                            (/*db,*/ true)
+                                    )*/
+                                    "AutoWind" -> actionQeue.add(MyGardenMainMVFlow.Action.AutoWind(true))/*offer(
                                         MyGardenMainMVFlow.Action.AutoWind(
-                                            db,
                                             true
                                         )
-                                    )
+                                    )*/
 /*
                                     "saveNastr" -> {
                                         CommonFun.saveNastrBean()
@@ -185,7 +207,7 @@ open class WebServerActivity:AppCompatActivity() {
                 val builder = GsonBuilder()
                 val gson = builder.create()
                 val nb = gson.fromJson<NastrBean>(json, NastrBean::class.java)
-                CommonFun.saveNastrBean(nb, db!!)
+                CommonFun.instance.saveNastrBean(nb, db)
                 val resp = "{name:\"result\", value:\"ok\"}"
                 return newFixedLengthResponse(resp)
             } else {
