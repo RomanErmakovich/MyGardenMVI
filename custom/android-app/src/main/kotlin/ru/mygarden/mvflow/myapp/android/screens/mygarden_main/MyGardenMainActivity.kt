@@ -48,19 +48,7 @@ class MyGardenMainActivity : WebServerActivity(), M_MenuListener {
         title = "Программа МОЙ САД"
 
         val dao: ParamDao = db!!.paramDao()
-/*
-        val db = Room.databaseBuilder(
-            applicationContext,
-            AppDatabase::class.java, "databasename2"
-        )/*.addMigrations(MIGRATION_1_2)*/.allowMainThreadQueries().build()
-*/
-        //val db = AppDatabase().getDatabase(applicationContext)
-
-        //dao = db!!.paramDao()
         dao.insertParams()
-
-
-//        actionQeue.add(Action.GetIP)
 
         mySMSReceiver = SMSReceiver()
         val filterSMS = IntentFilter("android.provider.Telephony.SMS_RECEIVED")
@@ -168,15 +156,12 @@ class MyGardenMainActivity : WebServerActivity(), M_MenuListener {
 
 
                 binding.ibAutoWater.setOnClickListener {
-                    //offer(Action.AutoWater(/*db,*/ false))
                     actionQeue.add(Action.AutoWater(false))
                 }
                 binding.ibAutoHeat.setOnClickListener {
-                    //offer(Action.AutoHeat(/*db,*/ false))
                     actionQeue.add(Action.AutoHeat(false))
                 }
                 binding.ibAutoWind.setOnClickListener {
-                    //offer(Action.AutoWind(/*db,*/ false))
                     actionQeue.add(Action.AutoWind(false))
                 }
 
@@ -186,7 +171,6 @@ class MyGardenMainActivity : WebServerActivity(), M_MenuListener {
 
                 val jobGetAllAutoState = lifecycleScope.launch {
                     delay(1000)
-                    //offer(Action.GetAllAutoState(/*db,*/ false))
                     actionQeue.add(Action.GetAllAutoState(false))
                 }
                 jobGetAllAutoState.start()
@@ -194,7 +178,6 @@ class MyGardenMainActivity : WebServerActivity(), M_MenuListener {
                 val jobInfo = lifecycleScope.launch {
                     while (true) {
                         delay(1000)
-                        //offer(Action.GetAllInfo(/*db,*/ false))
                         actionQeue.add(Action.GetAllInfo(false))
                         delay(30000)
                     }
@@ -205,7 +188,6 @@ class MyGardenMainActivity : WebServerActivity(), M_MenuListener {
                 val jobRobotOthers = lifecycleScope.launch {
                     delay(7000)
                     while (true) {
-                        //offer(Action.AutoRobotOthers/*(db)*/)
                         actionQeue.add(Action.AutoRobotOthers)
                         delay(60000)
                     }
@@ -217,7 +199,6 @@ class MyGardenMainActivity : WebServerActivity(), M_MenuListener {
                 val jobRobotWind = lifecycleScope.launch {
                     delay(5000)
                     while (true) {
-                        //offer(Action.AutoRobotWind/*(db)*/)
                         actionQeue.add(Action.AutoRobotWind)
                         delay(30 * 60000)
                     }

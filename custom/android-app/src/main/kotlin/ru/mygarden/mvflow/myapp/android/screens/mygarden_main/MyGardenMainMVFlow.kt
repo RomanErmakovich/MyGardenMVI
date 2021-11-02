@@ -59,28 +59,18 @@ object MyGardenMainMVFlow {
         data class Open12Gr (val fromWeb : Boolean) : Action()
         data class Open123Gr (val fromWeb : Boolean) : Action()
 
-        data class GetAllInfo (/*val db : AppDatabase? = null, */val fromWeb : Boolean) : Action()
+        data class GetAllInfo (val fromWeb : Boolean) : Action()
         data class CloserAllGr (val fromWeb : Boolean) : Action()
         data class HeatOn (val fromWeb : Boolean) : Action()
-        data class HeatOff (/*val db : AppDatabase? = null,*/ val fromWeb : Boolean) : Action()
-        data class Water1On (/*val db : AppDatabase? = null,*/ val fromWeb : Boolean) : Action()
+        data class HeatOff (val fromWeb : Boolean) : Action()
+        data class Water1On (val fromWeb : Boolean) : Action()
         data class Water1Off (val fromWeb : Boolean) : Action()
 
-        data class AutoWater (/*val db : AppDatabase? = null,*/ val fromWeb : Boolean) : Action()
-        data class AutoHeat (/*val db : AppDatabase? = null,*/ val fromWeb : Boolean) : Action()
-        data class AutoWind (/*val db : AppDatabase? = null,*/ val fromWeb : Boolean) : Action()
-        data class GetAllAutoState (/*val db : AppDatabase? = null,*/ val fromWeb : Boolean) :
+        data class AutoWater ( val fromWeb : Boolean) : Action()
+        data class AutoHeat (val fromWeb : Boolean) : Action()
+        data class AutoWind (val fromWeb : Boolean) : Action()
+        data class GetAllAutoState (val fromWeb : Boolean) :
         Action()
-/*
-        data class AutoRobotWind (val db : AppDatabase? = null) : Action()
-        data class AutoRobotOthers (val db : AppDatabase? = null) : Action()
-
-        data class GetLastWater (val db : AppDatabase? = null) : Action()
-
-        data class GetPar (val db : AppDatabase? = null) : Action()
-
-        data class Heat10On (val db : AppDatabase? = null, val fromWeb : Boolean) : Action()
-*/
 
         object AutoRobotWind : Action()
         object AutoRobotOthers : Action()
@@ -89,7 +79,7 @@ object MyGardenMainMVFlow {
 
         object GetPar : Action()
 
-        data class Heat10On (/*val db : AppDatabase? = null,*/ val fromWeb : Boolean) : Action()
+        data class Heat10On (val fromWeb : Boolean) : Action()
 
         object GetIP: Action()
     }

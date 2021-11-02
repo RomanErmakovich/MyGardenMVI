@@ -69,9 +69,6 @@ open class WebServerActivity:AppCompatActivity() {
 
         MyGardenMainMVFlow.db = db
 
-        //var component = DaggerDBComponent.create()
-
-        //db = DB(applicationContext).getDatabase()!!
         startAndroidWebServer()
 
         val view = object : MyGardenMainMVFlow.View {
@@ -90,52 +87,28 @@ open class WebServerActivity:AppCompatActivity() {
                     delay(5000)
                         while (true) {
                                 when (strAct){
-                                    "Open1Gr" -> actionQeue.add(MyGardenMainMVFlow.Action.Open1Gr(true))//offer(MyGardenMainMVFlow.Action.Open1Gr(true))
+                                    "Open1Gr" -> actionQeue.add(MyGardenMainMVFlow.Action.Open1Gr(true))
                                     "Open12Gr" ->actionQeue.add(MyGardenMainMVFlow.Action.Open12Gr
-                                        (true))// offer(MyGardenMainMVFlow.Action.Open12Gr(true))
-                                    "Open123Gr" -> actionQeue.add(MyGardenMainMVFlow.Action.Open123Gr(true))//offer(MyGardenMainMVFlow.Action.Open123Gr
+                                        (true))
+                                    "Open123Gr" -> actionQeue.add(MyGardenMainMVFlow.Action.Open123Gr(true))
                                         // (true))
-                                    "CloserAllGr" -> actionQeue.add(MyGardenMainMVFlow.Action.CloserAllGr(true))/*offer(
-                                        MyGardenMainMVFlow.Action.CloserAllGr(
-                                            true
-                                        )
-                                    )*/
+                                    "CloserAllGr" -> actionQeue.add(MyGardenMainMVFlow.Action.CloserAllGr(true))
                                     "Water1On" -> actionQeue.add(MyGardenMainMVFlow.Action
-                                        .Water1On(true)) /*offer(
-                                        MyGardenMainMVFlow.Action.Water1On(
-                                            true
-                                        )
-                                    )*/
-                                    "Water1Off" -> actionQeue.add(MyGardenMainMVFlow.Action.Water1Off(true))//offer(MyGardenMainMVFlow.Action.Water1Off
-                                        // (true))
-                                    "HeatOn" -> actionQeue.add(MyGardenMainMVFlow.Action.HeatOn(true))//offer(MyGardenMainMVFlow.Action.HeatOn(true))
+                                        .Water1On(true))
+                                    "Water1Off" -> actionQeue.add(MyGardenMainMVFlow.Action.Water1Off(true))
+                                    "HeatOn" -> actionQeue.add(MyGardenMainMVFlow.Action.HeatOn(true))
                                     "Heat10On" -> offer(MyGardenMainMVFlow.Action.Heat10On(
                                         true))
-                                    "HeatOff" -> actionQeue.add(MyGardenMainMVFlow.Action.HeatOff(true))//offer(MyGardenMainMVFlow.Action.HeatOff(true))
-                                    "GetAllInfo" -> actionQeue.add(MyGardenMainMVFlow.Action.GetAllInfo(true))/*offer(
-                                        MyGardenMainMVFlow.Action.GetAllInfo
-                                            (true)
-                                    )*/
+                                    "HeatOff" -> actionQeue.add(MyGardenMainMVFlow.Action.HeatOff(true))
+                                    "GetAllInfo" -> actionQeue.add(MyGardenMainMVFlow.Action.GetAllInfo(true))
                                     "GetNastrBean" -> {
                                         nastrBean = CommonFun.instance.getNastrBean(db)
                                         strAct = ""
                                         resAvailable = true
                                     }
-                                    "AutoHeat" -> actionQeue.add(MyGardenMainMVFlow.Action.AutoHeat(true))/*offer(
-                                        MyGardenMainMVFlow.Action.AutoHeat(
-                                            /*db,*/
-                                            true
-                                        )
-                                    )*/
-                                    "AutoWater" -> actionQeue.add(MyGardenMainMVFlow.Action.AutoWater(true))/*offer(
-                                        MyGardenMainMVFlow.Action.AutoWater
-                                            (/*db,*/ true)
-                                    )*/
-                                    "AutoWind" -> actionQeue.add(MyGardenMainMVFlow.Action.AutoWind(true))/*offer(
-                                        MyGardenMainMVFlow.Action.AutoWind(
-                                            true
-                                        )
-                                    )*/
+                                    "AutoHeat" -> actionQeue.add(MyGardenMainMVFlow.Action.AutoHeat(true))
+                                    "AutoWater" -> actionQeue.add(MyGardenMainMVFlow.Action.AutoWater(true))
+                                    "AutoWind" -> actionQeue.add(MyGardenMainMVFlow.Action.AutoWind(true))
 /*
                                     "saveNastr" -> {
                                         CommonFun.saveNastrBean()
