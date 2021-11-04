@@ -2,8 +2,6 @@ package ru.mygarden.mvflow.myapp.android.screens.mygarden_main
 
 import android.app.AlertDialog
 import android.content.Context
-import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.db.AppDatabase
-import javax.inject.Inject
 
 object M_Menu {
 

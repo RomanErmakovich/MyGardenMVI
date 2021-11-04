@@ -23,13 +23,11 @@ import ru.mygarden.mvflow.myapp.android.screens.home.HomeActivity
 import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.MyGardenMainMVFlow.Action
 import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.MyGardenMainMVFlow.State
 import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.CommonFun
-import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.db.AppDatabase
 import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.db.ParamDao
 import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.sms.SMSReceiver
 import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.sms.SendMessage
 import ru.mygarden.mvflow.myapp.android.screens.nastr.NastrActivity
 import java.util.*
-import javax.inject.Inject
 
 
 class MyGardenMainActivity : WebServerActivity(), M_MenuListener {
@@ -38,7 +36,6 @@ class MyGardenMainActivity : WebServerActivity(), M_MenuListener {
     val viewModel: MyGardenMainViewModel by viewModels()
 
     var mySMSReceiver: BroadcastReceiver? = null
-    //var dao:ParamDao? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

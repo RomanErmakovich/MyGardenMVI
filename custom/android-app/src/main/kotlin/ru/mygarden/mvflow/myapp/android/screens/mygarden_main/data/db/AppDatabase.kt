@@ -4,9 +4,6 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import dagger.Module
-import dagger.Provides
-import javax.inject.Inject
 
 
 @Database(entities = arrayOf(ParamBean::class), version = 1, exportSchema = false)

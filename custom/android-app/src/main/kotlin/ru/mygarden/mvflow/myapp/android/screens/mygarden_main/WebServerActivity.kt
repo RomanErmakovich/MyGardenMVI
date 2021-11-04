@@ -17,15 +17,12 @@ import kotlinx.coroutines.launch
 import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.arduino.ArdBean
 import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.CommonFun
 import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.db.AppDatabase
-import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.db.DB
-//import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.db.DBComponent
 import ru.mygarden.mvflow.myapp.android.screens.nastr.NastrBean
 import java.net.Inet4Address
 import java.net.InetAddress
 import java.net.NetworkInterface
 import java.net.SocketException
 import java.util.*
-import javax.inject.Inject
 import kotlin.collections.HashMap
 
 

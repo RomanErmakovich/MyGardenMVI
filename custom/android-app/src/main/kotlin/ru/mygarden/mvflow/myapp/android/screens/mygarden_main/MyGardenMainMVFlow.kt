@@ -6,9 +6,7 @@ import net.pedroloureiro.mvflow.MVFlow
 import net.pedroloureiro.mvflow.Reducer
 import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.arduino.ArdBean
 import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.db.AppDatabase
-import ru.mygarden.mvflow.myapp.android.screens.mygarden_main.data.db.DB
 import ru.mygarden.mvflow.myapp.android.screens.nastr.NastrBean
-import javax.inject.Inject
 
 object MyGardenMainMVFlow {
 
