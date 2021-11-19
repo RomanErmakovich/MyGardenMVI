@@ -261,5 +261,5 @@ class MyGardenMainActivity : WebServerActivity(), M_MenuListener {
         super.onDestroy()
     }
 
-//888
+//https://github.com/RomanErmakovich/MyGardenMVI/
 }
